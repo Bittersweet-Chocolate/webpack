@@ -5,7 +5,7 @@
 const { resolve } = require("path")
 const htmlWebpackPlugin = require("html-webpack-plugin")
 // 清除打包的dist文件夹
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 module.exports = {
   // webpack配置
   // 入口起点
@@ -36,13 +36,22 @@ module.exports = {
           {
             loader: "url-loader",
             options: {
-              // 这里的options选项参数可以定义多大的图片转换为base64
+              // 对图片重命名，[hash:10]hash前10位 [ext]原文件拓展名
               name: "[name]-[hash:8].min.[ext]",
-              limit: 8*1024, // 表示小于8kb的图片转为base64,大于8kb的是路径
-              outputPath: "images" //定义输出的图片文件夹
+              limit: 8 * 1024, // 表示小于8kb的图片转为base64,大于8kb的是路径
+              outputPath: "images", //定义输出的图片文件夹
+              // html-loader导入图片是common.js
+              // 解析时出现 [object module]
+              // 关闭url-loader的es6模块化，使用common.js解析即可
+              // esModules: false
             }
           }
         ]
+      },
+      {
+        test: /\.html$/,
+        // 处理html中的img文件（负责引入img，从而能被url-loader处理）
+        loader: "html-loader"
       }
     ]
   },
