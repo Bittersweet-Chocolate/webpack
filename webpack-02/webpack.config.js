@@ -42,7 +42,7 @@ module.exports = {
       template: "./src/index.html"
     }),
     new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /.css$/, //正则表达式匹配需要优化或者压缩的资源名
+      assetNameRegExp: /\.css$/, //正则表达式匹配需要优化或者压缩的资源名
       cssProcessor: 'cssnano', //用于压缩和优化CSS的处理器, 默认 cssnano
       cssProcessorPluginOptions: {
         //传递cssProcessor的插件选项,{}

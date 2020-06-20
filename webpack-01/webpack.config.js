@@ -33,7 +33,8 @@ module.exports = {
         // file-loader 和 url-loader
         test: /\.(png|jpg|gif|svg)$/,
         use: [
-          {
+          { 
+            // 找每个html/css文件引用的img路径
             loader: "url-loader",
             options: {
               // 对图片重命名，[hash:10]hash前10位 [ext]原文件拓展名
