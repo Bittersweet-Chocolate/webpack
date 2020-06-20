@@ -5,6 +5,7 @@
 const { resolve } = require("path")
 const htmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -30,7 +31,7 @@ module.exports = {
         options: {
           // 对图片重命名，[hash:10]hash前10位 [ext]原文件拓展名
           name: "[name]-[hash:8].min.[ext]",
-          outputPath: "static", //定义输出的图片文件夹
+          outputPath: "static" //定义输出的图片文件夹
         }
       }
     ]
@@ -39,6 +40,15 @@ module.exports = {
     new CleanWebpackPlugin(),
     new htmlWebpackPlugin({
       template: "./src/index.html"
+    }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /.css$/, //正则表达式匹配需要优化或者压缩的资源名
+      cssProcessor: 'cssnano', //用于压缩和优化CSS的处理器, 默认 cssnano
+      cssProcessorPluginOptions: {
+        //传递cssProcessor的插件选项,{}
+        preset: ["default", { discardComments: { removeAll: true } }]
+      },
+      canPrint: true //表示插件能够在console中打印信息
     })
   ],
   mode: "development"
