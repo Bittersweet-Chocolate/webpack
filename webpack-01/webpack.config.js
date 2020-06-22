@@ -33,14 +33,14 @@ module.exports = {
         // file-loader 和 url-loader
         test: /\.(png|jpg|gif|svg)$/,
         use: [
-          { 
+          {
             // 找每个html/css文件引用的img路径
             loader: "url-loader",
             options: {
               // 对图片重命名，[hash:10]hash前10位 [ext]原文件拓展名
               name: "[name]-[hash:8].min.[ext]",
               limit: 8 * 1024, // 表示小于8kb的图片转为base64,大于8kb的是路径
-              outputPath: "images", //定义输出的图片文件夹
+              outputPath: "images" //定义输出的图片文件夹
               // html-loader导入图片是common.js
               // 解析时出现 [object module]
               // 关闭url-loader的es6模块化，使用common.js解析即可
@@ -68,5 +68,17 @@ module.exports = {
   ],
   // 模式
   //   mode: "production"
-  mode: "development"
+  mode: "production",
+
+  // 开发服务器 （自动编译，自动打开浏览器）
+  // 特点没有输出，只在内存在编译打包，没有输出
+  devServer: {
+    //开发服务器的配置
+    port: 3000,
+    contentBase: resolve(__dirname, "dist"),
+    //自动打开浏览器
+    open: true, 
+    //启动gzip压缩
+    compress: true  
+  }
 }
