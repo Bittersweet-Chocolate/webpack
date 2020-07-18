@@ -23,5 +23,14 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "borwserlist":{
+    "devlopment":[
+      "last 1 chrome version"
+    ],
+    "production":[
+      ">0.2%",
+      "not dead"
+    ]
+  }
 }
