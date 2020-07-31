@@ -31,5 +31,14 @@ module.exports = {
             filename: 'css/mian.css'
         })
     ],
-    mode: 'development'
+    mode: 'development',
+    devServer: {
+        port: 3000,
+        // 告诉本地服务从哪里提供内容且只有在您想要提供静态文件时才需要这样做
+        contentBase: resolve(__dirname, "dist"),
+        //自动打开浏览器
+        open: true,
+        compress: true,
+        hot: true
+    }
 }
