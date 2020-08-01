@@ -12,26 +12,14 @@ module.exports = {
         rules: [
             {
                 test: /\.css/,
-                use: ['style.loader', 'css-loader']
+                use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.less/,
-                use: ['style.loader', 'css-loader', 'less-loader']
-            },
-            {
-                test: /\.(jpg|png|gif)$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 8 * 1024,
-                    name: '[hash:10].[ext]',
-                    esModule: false
-                }
-            },
-            {
-                exclude: /\.(html|js|css|less|jpg|png|git)/,
+                exclude: /\.(html|css|js)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[hash:10].[ext]'
+                    name: '[hash:10].[ext]',
+                    outputPath:'static/',
                 }
             }
         ]
