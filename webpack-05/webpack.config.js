@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
-    entry: './src/js/index.js',
+    entry: './js/index.js',
     output: {
         filename: 'js/main.js',
         path: resolve(__dirname, 'dist')
@@ -25,13 +25,13 @@ module.exports = {
     plugins: [
         // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './index.html'
         }),
         new MiniCssExtractPlugin({
             filename: 'css/mian.css'
         })
     ],
-    mode: 'development',
+    mode: 'production',
     devServer: {
         port: 3000,
         // 告诉本地服务从哪里提供内容且只有在您想要提供静态文件时才需要这样做
