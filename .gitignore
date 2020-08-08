@@ -1,6 +1,9 @@
 webpack-01/build
 webpack-01/node_modules
 node_modules
-webpack-01/dist
-webpack-02/dist
+webpack-01/dist/
+webpack-02/dist/
+webpack-03/dist/
+webpack-04/dist/
 webpack-05/dist/
+webpack-06/dist/
